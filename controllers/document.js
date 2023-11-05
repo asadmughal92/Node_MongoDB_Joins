@@ -10,7 +10,7 @@ const getUserDocuments = async (req, res) => {
       return res.status(404).json({ error: "User not found" });
     }
 
-    const documents = await Document.find({ user: user._id }).populate("user");
+    const documents = await Document.find({ user: user._id }).populate("user","firstName lastName email");
 
     res.status(200).json({ user, documents });
   } catch (error) {
